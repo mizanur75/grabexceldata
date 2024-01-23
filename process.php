@@ -17,8 +17,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
   }
 
 
-  $result = shell_exec('python process.py 2>&1');
-  var_dump($result); exit;
+  
 // Check if a file is uploaded
 if (isset($_FILES['excel_file'])) {
     $file = $_FILES['excel_file'];
