@@ -43,7 +43,7 @@
             <input type="file" name="excel_file" class="form-control" id="inputGroupFile02">
             <label class="input-group-text" for="inputGroupFile02">Upload</label>
           </div>
-          <input type="submit" name="submit" class="btn btn-success" value="Upload">
+          <input type="submit" name="submit" class="btn btn-success" value="Submit">
         </div>
       </form>
 
