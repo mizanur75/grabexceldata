@@ -46,15 +46,15 @@ if (isset($_FILES['excel_file'])) {
             $business_summary = $spreadsheet->getSheetByName('Business Summary');
             $annual_summary = $spreadsheet->getSheetByName('Annual Summary - Comparison');
 
-            $wholesale_business = $entity_profile->getCell('B35')->getValue() ?? 0;
-            $retail_business = $entity_profile->getCell('B36')->getValue() ?? 0;
-            $others = $entity_profile->getCell('B37')->getValue() ?? 0;
+            $wholesale_business = $entity_profile->getCell('B35')->getValue();
+            $retail_business = $entity_profile->getCell('B36')->getValue();
+            $others = $entity_profile->getCell('B37')->getValue();
 
-            $gross_turnover24 = $business_summary->getCell('C6')->getValue() ?? 0;
-            $gross_turnover23 = $business_summary->getCell('D6')->getValue() ?? 0;
+            $gross_turnover24 = $business_summary->getCell('C6')->getValue();
+            $gross_turnover23 = $business_summary->getCell('D6')->getValue();
 
-            $net_revenue24 = $annual_summary->getCell('B4')->getValue() ?? 0;
-            $net_revenue23 = $annual_summary->getCell('C4')->getValue() ?? 0;
+            $net_revenue24 = $annual_summary->getCell('B4')->getValue();
+            $net_revenue23 = $annual_summary->getCell('C4')->getValue();
 
             $insert_query = "INSERT INTO `excel_datas` (`wholesale_business`, `retail_business`, `others`, `gross_turnover24`, `gross_turnover23`, `net_revenue24`, `net_revenue23`) VALUES(?,?,?,?,?,?,?)";
             $res = $conn->prepare($insert_query);
