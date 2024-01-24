@@ -148,7 +148,7 @@ if (isset($_FILES['excel_file'])) {
                 
 
                 // Output a link to the new file
-                $_SESSION['button'] = '<a class="btn btn-success" href="uploads/extracted_data.xlsx">Download Extracted Data</a>';
+                $_SESSION['button'] = '<a class="btn btn-success mr-5" href="uploads/extracted_data.xlsx">Download Extracted Data Xlsx</a> <a class="btn btn-success" href="uploads/extracted_data.csv">Download Extracted Data CSV</a>';
 
                 $insert_query = "INSERT INTO `excel_datas` (`wholesale_business`, `retail_business`, `others`, `gross_turnover24`, `gross_turnover23`, `net_revenue24`, `net_revenue23`) VALUES(?,?,?,?,?,?,?)";
                 $res = $conn->prepare($insert_query);
