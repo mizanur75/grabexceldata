@@ -116,39 +116,40 @@ if (isset($_FILES['excel_file'])) {
                 
 
                 // Alternatively, you can save the data as a CSV file
-                $existingCsvFile = __DIR__ . '/uploads/extracted_data.csv';
+                // $existingCsvFile = __DIR__ . '/uploads/extracted_data.csv';
 
-                if (file_exists($existingCsvFile)) {
-                    // Load the existing spreadsheet
-                    $existingCsv = IOFactory::load($existingCsvFile);
+                // if (file_exists($existingCsvFile)) {
+                //     // Load the existing spreadsheet
+                //     $existingCsv = IOFactory::load($existingCsvFile);
 
-                    // Access the active sheet in the existing spreadsheet
-                    $existingCsvF = $existingCsv->getActiveSheet();
+                //     // Access the active sheet in the existing spreadsheet
+                //     $existingCsvF = $existingCsv->getActiveSheet();
 
-                    // Assuming $newData is an array representing the new row of data
-                    $newData = [$wholesale_business, $retail_business, $others, $gross_turnover24, $gross_turnover23, $net_revenue24, $net_revenue23];
+                //     // Assuming $newData is an array representing the new row of data
+                //     $newData = [$wholesale_business, $retail_business, $others, $gross_turnover24, $gross_turnover23, $net_revenue24, $net_revenue23];
 
-                    // Find the last row with data in the existing sheet
-                    $lastRow = $existingCsvF->getHighestRow() + 1;
+                //     // Find the last row with data in the existing sheet
+                //     $lastRow = $existingCsvF->getHighestRow() + 1;
 
-                    // Loop through the new data and set the values in the new row
-                    foreach ($newData as $columnIndex => $value) {
-                        $existingCsvF->setCellValueByColumnAndRow($columnIndex + 1, $lastRow, $value);
-                    }
+                //     // Loop through the new data and set the values in the new row
+                //     foreach ($newData as $columnIndex => $value) {
+                //         $existingCsvF->setCellValueByColumnAndRow($columnIndex + 1, $lastRow, $value);
+                //     }
 
-                    // Save the modified spreadsheet back to the file
-                    $writer = new Xlsx($existingCsv);
-                    $writer->save($existingCsvFile);
-                }else{
-                    $newCsvFile = __DIR__ . '/uploads/extracted_data.csv';
-                    $writer = new Csv($newSpreadsheet);
-                    $writer->setDelimiter(',');
-                    $writer->save($newCsvFile);
-                }
+                //     // Save the modified spreadsheet back to the file
+                //     $writer = new Xlsx($existingCsv);
+                //     $writer->save($existingCsvFile);
+                // }else{
+                //     $newCsvFile = __DIR__ . '/uploads/extracted_data.csv';
+                //     $writer = new Csv($newSpreadsheet);
+                //     $writer->setDelimiter(',');
+                //     $writer->save($newCsvFile);
+                // }
                 
 
                 // Output a link to the new file
-                $_SESSION['button'] = '<a class="btn btn-success mr-5" href="uploads/extracted_data.xlsx">Download Extracted Data Xlsx</a> <a class="btn btn-success" href="uploads/extracted_data.csv">Download Extracted Data CSV</a>';
+                $_SESSION['button'] = '<a class="btn btn-success mr-5" href="uploads/extracted_data.xlsx">Download Extracted Data Xlsx</a>';
+                 // <a class="btn btn-success" href="uploads/extracted_data.csv">Download Extracted Data CSV</a>
 
                 $insert_query = "INSERT INTO `excel_datas` (`wholesale_business`, `retail_business`, `others`, `gross_turnover24`, `gross_turnover23`, `net_revenue24`, `net_revenue23`) VALUES(?,?,?,?,?,?,?)";
                 $res = $conn->prepare($insert_query);
