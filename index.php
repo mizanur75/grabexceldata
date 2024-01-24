@@ -37,6 +37,19 @@
        }
          unset($_SESSION['error']);
       ?>
+
+      <?php
+        if(isset($_SESSION['button'])){
+        ?>
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION['button']; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+       
+       <?php 
+       }
+         unset($_SESSION['button']);
+      ?>
       <form action="process.php" method="POST" enctype="multipart/form-data">
         <div class="row">
           <div class="input-group mb-3">
