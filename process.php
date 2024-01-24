@@ -27,18 +27,19 @@ if (isset($_FILES['excel_file'])) {
         // Specify the path to store the uploaded file
         $uploadPath = __DIR__ . '/uploads/';
         $uploadedFile = $uploadPath . basename($file['name']);
-        // var_dump($uploadedFile); exit;
+        if(!file_exists($uploadPath)){
+            mkdir('uploads', 777, true);
+        }
 
         // Move the uploaded file to the specified directory
         if (move_uploaded_file($file['tmp_name'], $uploadedFile)) {
-            // Specify the sheet name you want to extract data from
-            // $sheetNames = ['Entity Profile', 'Business Summary', 'Annual Summary - Comparison']; // Replace with your sheet name
 
             // Load the Excel file
             $spreadsheet = IOFactory::load($uploadedFile);
+
+            //Get all sheets name
             // $sheets = $spreadsheet->getSheetNames();
 
-            	
 
             // Get the desired sheet by name
             $entity_profile = $spreadsheet->getSheetByName('Entity Profile');
